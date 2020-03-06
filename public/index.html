@@ -1,66 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-    <link rel="stylesheet" href="estilos.css">
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.10.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.10.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.10.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.10.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.10.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
+<head>
+    <meta charset="UTF-8">
+    <title>Becas</title>
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-height: 100vh;
+        flex-wrap: wrap;
+    }
+    footer{
+        align-self: flex-end;
+        line-height: 3;
+        text-align: center;
+        width: 100%;
+    }
     </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
+</head>
+<body>
+    <form name="formu" action="javascript:datos();">
+        <select id="prom" name="prom">
+            <option disabled selected>Selecciona tu promedio</option>
+            <option value="1">0 a 8.0</option>
+            <option value="2">8.1 a 8.6</option>
+            <option value="3">8.7 a 9.6</option>
+            <option value="4">9.7 a 10</option>
+          </select>     
+          <select id="escuela" name="escuela">
+            <option disabled selected>Escolaridad</option>
+            <option value="1">Secundaria</option>
+            <option value="2">Preparatoria</option>
+            <option value="3">Universidad</option>
+          </select>       
+          <select id="pasatiempo" name="pasatiempo">
+            <option disabled selected>Ingresa pasatiempo favorito</option>
+            <option value="1">Videojuegos</option>
+            <option value="2">Estudiar</option>
+            <option value="3">Dormir</option>
+          </select>  
+          
+        <button type="submit">Enviar datos</button>
+    </form>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        function datos(){
+
+           //BAJAR DATOS DEL PRIMER SELECT
+            var combo = document.getElementById("prom");
+            var selected = combo.options[combo.selectedIndex].text;
+            (selected);
+           
+           //BAJAR DATOS DEL SEGUNDO SELECT
+            var raiz = document.getElementById("escuela");
+            var selected1 = raiz.options[raiz.selectedIndex].text;
+            (selected1);
+
+             //BAJAR DATOS DEL TERCER SELECT
+            var pas = document.getElementById("pasatiempo");
+            var pasa = pas.options[pas.selectedIndex].text;
+            (pasa);
+
+            if(document.formu.prom.value == 1 && document.formu.pasatiempo.value == 1){
+                var reco = "Te recomendamos que mejores tu promedio, deja los pasatiempos y te pongas a estudiar";
+            }else if(document.formu.prom.value == 4 && document.formu.pasatiempo.value == 2){
+                var reco = "Sigue como hasta ahora, LOGRARÁS GRANDES COSAS";
+            }else if(document.formu.prom.value == 2 && document.formu.pasatiempo.value == 3){
+                var reco = "Deja de dormir y estudia un poco más, TÚ PUEDES";
+            }else if(document.formu.prom.value == 2 && document.formu.pasatiempo.value == 1){
+                var reco = "Ponte las pilas y deja los videojuegos";
+            }else if(document.formu.prom.value == 1 && document.formu.pasatiempo.value == 2){
+                var reco = "No haz estudiado lo suficiente";
+            }else if(document.formu.prom.value == 1 && document.formu.pasatiempo.value == 3){
+                var reco = "Durmiendo no ganarás nada";
+            }else if(document.formu.prom.value == 2 && document.formu.pasatiempo.value == 2){
+                var reco = "Te falta estudiar un poco más";
+            }else if(document.formu.prom.value == 3 && document.formu.pasatiempo.value == 1){
+                var reco = "Alejate poco de los videojuegos y mejorarás aún más";
+            }else if(document.formu.prom.value == 3 && document.formu.pasatiempo.value == 2){
+                var reco = "Lo estás logrando, te falta un plus para lograr lo esperado";
+            }else if(document.formu.prom.value == 3 && document.formu.pasatiempo.value == 3){
+                var reco = "Estudia un poco más, ese 10 llegará pronto";
+            }else if(document.formu.prom.value == 4 && document.formu.pasatiempo.value == 1){
+                var reco = "Lo haz merecido";
+            }else if(document.formu.prom.value == 2 && document.formu.pasatiempo.value == 3){
+                var reco = "Después de estudiar, una buena siesta no hace daño";
+            }
+
+
+           var datos = "\nPromedio: " + selected  + "\nEscolaridad: " + selected1+ "\nPasatiempo: " + pasa+ "\nRecomendacion: " + reco;
+            console.log(datos);
+            alert("Datos de formulario " + datos);      
         }
-      });
+        
     </script>
-     <footer>Copyright &copy; 2020 Iris Betanzos Cruz.</footer>
-  </body>
-</html>
+    <footer>
+        DERECHOS RESERVADOS | BETANZOS CRUZ IRIS | COPYRIGTH® 
+    </footer>
+</body>
+</html> 
